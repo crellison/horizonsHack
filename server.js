@@ -1,8 +1,7 @@
 var express = require('express')
-var logger = require('morgan')
-var session = require('express-session')
+var morgan = require('morgan')
 var mongoose = require('mongoose')
-var MongoStore = require('connect-mongo')(session)
+// var MongoStore = require('connect-mongo')(session)
 var bodyParser = require('body-parser')
 var path = require('path')
 var webpack = require('webpack');
@@ -10,9 +9,9 @@ var webpackMiddleware = require("webpack-dev-middleware")
 var config = require('./webpack.config');
 
 var app = express()
-app.use(logger('dev'))
+// app.use(logger('dev'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // mongoose.connect(process.env.MONGODB_URI)
 // var mongoStore = new MongoStore({mongooseConnection: mongoose.connection})
@@ -20,6 +19,24 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //   secret: process.env.SECRET,
 //   store: mongoStore
 // }))
+
+// configure our app to handle CORS requests
+app.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+  next();
+});
+
+// log all requests to the console 
+app.use(morgan('dev'));
+
+// ROUTES FOR OUR API =================
+// ====================================
+
+// API ROUTES ------------------------
+var apiRoutes = require('./routes/api')(app, express);
+app.use('/api', apiRoutes);
 
 var compiler = webpack(config)
 app.use(webpackMiddleware(compiler, {
