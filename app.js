@@ -12,6 +12,7 @@ var MongoStore = require('connect-mongo/es5')(session);
 var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var morgan = require('morgan')
 var app = express();
 // ----------------------------------------------
 // Import models
