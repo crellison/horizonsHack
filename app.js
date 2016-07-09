@@ -1,10 +1,15 @@
 var express = require('express');
+var session = require('express-session')
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var passport = require('passport');
+var LocalStrategy = require('passport-local');
+var models = require('./models/models');
+var MongoStore = require('connect-mongo/es5')(session);
+var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
