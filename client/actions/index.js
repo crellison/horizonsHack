@@ -8,7 +8,6 @@
 
 const ADD_HEALTH = 'ADD_HEALTH';
 
-
 function addHealth(ages, days) {
   return {
   	type: ADD_HEALTH,
@@ -61,14 +60,14 @@ function loginUser(creds) {
   let config = {
     method: 'POST',
     headers: { 'Content-Type':'application/x-www-form-urlencoded' },
-    body: `username=${creds.username}&password=${creds.password}`
+    body: `email=${creds.email}&password=${creds.password}`
   }
 
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
-    return fetch('http://localhost:3001/sessions/create', config)
+    return fetch('http://localhost:3000/api/authenticate', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
             ).then(({ user, response }) =>  {

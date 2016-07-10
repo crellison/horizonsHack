@@ -6,6 +6,11 @@ var addEvent = require('../actions').addEvent;
 var Chart = require('chart.js')
 var Data = require('../../grabData')
 
+// import React, { Component, PropTypes } from 'react'
+import Login from './Login'
+import Logout from './Logout'
+import { loginUser, logoutUser } from '../actions'
+
 // jQuery AJAX support
 var $ = require('jquery');
 
@@ -17,27 +22,32 @@ const App = React.createClass ({
     },
 
   render: function() {
+    const { dispatch, isAuthenticated, errorMessage } = this.props
+    var mainPanel = null;
+    var mode = this.props.store.getState().mode;
     // ------------------------------------------
     // LOGIN PAGE
     // ------------------------------------------
     return (
-      <div className="row">
-        <div className="col-xs-8 col-xs-offset-2 tallboy">
-          <form className="form-signin">
-            <h2 className="form-signin-heading">Please sign in</h2>
-            <label name="inputEmail" className="sr-only">Email address</label>
-            <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required=""/>
-            <label name="inputPassword" className="sr-only">Password</label>
-            <input type="password" id="inputPassword" className="form-control" placeholder="Password" required=""/>
-            <div className="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me"/> 
-              </label>
-            </div>
-            <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-          </form>
+    <nav className='navbar navbar-default'>
+        <div className='container-fluid'>
+          <a className="navbar-brand" href="#">Quotes App</a>
+          <div className='navbar-form'>
+
+            {!isAuthenticated &&
+              <Login
+                errorMessage={errorMessage}
+                onLoginClick={ creds => dispatch(loginUser(creds)) }
+              />
+            }
+
+            {isAuthenticated &&
+              <Logout onLogoutClick={() => dispatch(logoutUser())} />
+            }
+
+          </div>
         </div>
-      </div>
+      </nav>
     )
 
     //CONTROL PANEL RENDERING HERE - VIA MODE IN STATE
@@ -58,6 +68,53 @@ const App = React.createClass ({
       </div>
     );
   }
+
+
+  //   return !isAuthenticated ?
+  //   return (<div>
+  //     <div className="row">
+  //       <div className="col-xs-8 col-xs-offset-2 tallboy">
+  //         <form className="form-signin">
+  //           <h2 className="form-signin-heading">Please sign in</h2>
+  //           <label name="inputEmail" className="sr-only">Email address</label>
+  //           <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required=""/>
+  //           <label name="inputPassword" className="sr-only">Password</label>
+  //           <input type="password" id="inputPassword" className="form-control" placeholder="Password" required=""/>
+  //           <div className="checkbox">
+  //             <label>
+  //               <input type="checkbox" value="remember-me"/> 
+  //             </label>
+  //           </div>
+  //           <button className="btn btn-lg btn-primary btn-block" onClick={(event) => this.handleClick(event)}>Sign in</button>
+  //         </form>
+  //         {errorMessage &&
+  //           <p>{errorMessage}</p>
+  //         }
+  //       </div>
+  //     </div>) :
+  //     //CONTROL PANEL RENDERING HERE - VIA MODE IN STATE
+  //     //Control panel views
+  //     if (mode === 'main') {
+  //       mainPanel =  <Profile store={this.props.store} activities={this.props.data}></Profile>
+  //     } else if (mode === 'lifeline') {
+  //       mainPanel = <Profile store={this.props.store} activities={this.props.data}><Healthline></Healthline></Profile>
+  //     }
+  //     return (
+  //       <div className="row">
+  //       	<div className="col-xs-9 tallboy" id="canvas">
+  //         <Avatar>PLACE AVATAR HERE</Avatar>
+  //       	</div>
+  //         {mainPanel}
+  //       </div>
+  //     )
+  //   </div>},
+
+  // handleClick(event) {
+  //   const username = this.refs.username
+  //   const password = this.refs.password
+  //   const creds = { username: username.value.trim(), password: password.value.trim() }
+  //   loginUser(creds)
+  // }    
 })
 
 const Avatar = React.createClass({
