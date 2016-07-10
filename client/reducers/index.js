@@ -22,7 +22,7 @@ const reducer = function(state, action) {
             var update = {};
             console.log('action', action)
             console.log('innerState:', state)
-            update[action.day] = state[action.day].concat({
+            update[action] = state[action].concat({
                 id: action.id,
                 name: action.name,
                 heartRate: action.heartRate,

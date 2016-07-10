@@ -21,6 +21,5 @@ function addActivity(id, name, heartRate, elapsedTime, calories, location) {
 
 module.exports = {
   ADD_ACTIVITY: ADD_ACTIVITY,
-  addText: addText,
   addActivity: addActivity
 };

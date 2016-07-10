@@ -1,8 +1,15 @@
-// Entry point for your React app.
-
 var React = require('react');
-var LinkedStateMixin = require('react-addons-linked-state-mixin');
-var addEvent = require('../actions').addEvent;
 
-// jQuery AJAX support
-var $ = require('jquery');
+var Actions = require('./actions');
+var App = require('./components/app'); //Components
+var reducer = require('./reducers'); //Reducers
+var ReactDOM = require('react-dom')
+
+var store = require('redux').createStore(reducer); 
+
+function render() {
+ReactDOM.render(<App />, document.getElementById('root'));
+}
+render()
+
+store.subscribe(render);
