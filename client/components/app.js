@@ -4,7 +4,7 @@ var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var addEvent = require('../actions').addEvent;
 var Chart = require('chart.js')
-var Data = require('./grabData')
+var Data = require('../../grabData')
 
 // import React, { Component, PropTypes } from 'react'
 import Login from './Login'
