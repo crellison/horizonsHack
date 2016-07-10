@@ -61,6 +61,7 @@ module.exports = function(app, express){
 	        // if user is found and password is right
 	        // create a token
 	        var token = jwt.sign({
+	        	id: user._id,
 	        	displayName: user.displayName,
 	        	email: user.email,
 	        	location: user.location
@@ -178,8 +179,11 @@ module.exports = function(app, express){
 		});
 
 	apiRouter.get('/me', function(req, res) {
-		User.findOne(req.decoded.displayName, function(err, user) {
+		console.log("BLAH");
+		console.log(req.decoded.id);
+		User.findOne({_id: req.decoded.id}, function(err, user) {
 		if (err) res.send(err);
+		console.log(user);
 		res.json(user);
 		});
 	});

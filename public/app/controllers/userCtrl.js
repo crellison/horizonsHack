@@ -39,6 +39,10 @@ angular.module('userCtrl', ['userService'])
 
 })
 
+.controller('userTokenController', function(User){
+	
+})
+
 // controller applied to user creation page
 .controller('userCreateController', function(User) {
 	

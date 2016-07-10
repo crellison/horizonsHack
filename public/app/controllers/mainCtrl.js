@@ -78,8 +78,4 @@ angular.module('mainCtrl', ["chart.js"])
 		$location.path('/login');
 	};
 
-	vm.createSample = function() {
-		Auth.createSampleUser();
-	};
-
 });
