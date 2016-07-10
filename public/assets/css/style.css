@@ -14,6 +14,10 @@ footer {
 	position: fixed;
 	bottom: 0;
 	left: 0;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	padding-left: 30px;
 }
 .container {
 	margin: 0;
@@ -95,6 +99,11 @@ footer {
 }
 #rightClick:hover, #leftClick:hover {
 	color: #2e2e2e;
+}
+#git {
+	margin-top: 10px;
+	height: 50px;
+	margin-right: 20px;
 }
 
 /* YINGHANG'S OLD STYLES 
