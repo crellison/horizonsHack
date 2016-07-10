@@ -8,12 +8,8 @@
 
 const ADD_HEALTH = 'ADD_HEALTH';
 
-<<<<<<< HEAD
 
 function addHealth(ages, days) {
-=======
-function addHealth(fitness, fatigue, form, age) {
->>>>>>> 494c78bd04f2ee1db4abf195489d0342816b2c45
   return {
   	type: ADD_HEALTH,
     ages: ages,
