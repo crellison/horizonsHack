@@ -6,9 +6,7 @@ angular.module('app.routes', ['ngRoute'])
 
 		// route for the home page
 		.when('/', {
-			templateUrl : 'app/views/pages/home.html',
-			controller: 'stravaController',
-			controllerAs: 'user'
+			templateUrl : 'app/views/pages/home.html'
 		})
 
 		.when('/token_exchange', {

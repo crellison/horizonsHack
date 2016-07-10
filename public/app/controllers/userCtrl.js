@@ -57,14 +57,6 @@ angular.module('userCtrl', ['userService'])
 	}, console.log)
 })
 
-.controller('stravaController', function(User, $routeParams, $http){
-	$http({
-		method: 'GET',
-		url: '/api/strava_data'
-	}).then(function(data) {
-		console.log(data);
-	}, console.log)
-})
 
 // controller applied to user creation page
 .controller('userCreateController', function(User) {

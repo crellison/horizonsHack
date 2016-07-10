@@ -30,8 +30,6 @@ function getTRIMP(hr, dur) {
 
 
 var grabData = function grabData(tok,cb) {
-
-
 	request('https://www.strava.com/api/v3/athlete/activities?access_token=' + tok + '&per_page=200',
 		function(error, response, body) {
 			if (error) console.log('bummer....')
@@ -80,7 +78,7 @@ var ageReturnArrayForHealthline = ageReturnArray.reverse()
 var dataToVisualize = {}
 dataToVisualize["ages"] = ageReturnArrayForHealthline
 dataToVisualize["days"] = dayReturnArray
-console.log(dataToVisualize)
+// console.log(dataToVisualize)
 
 cb.call(dataToVisualize) // does something with the data
 // return dataToVisualize
@@ -333,8 +331,7 @@ apiRouter.get('/strava_data', function(req, res){
 							return temp
 						})
 						// _.each(data, function(elt,i) {console.log(i+': '+elt.age)})
-						console.log(data)
-
+						// console.log(data.map(function(e) {return e.age}))
 						res.json(data.map(function(e) {return e.age}))
 						}
 					})

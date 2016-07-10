@@ -56,7 +56,7 @@ footer {
 	bottom: 57px;
 	left: 0;
 	width: 100vw !important;
-	height: 347px !important;
+	height: 350px !important;
 }
 .right {
 	position: absolute;
@@ -165,7 +165,7 @@ font {
     padding: 36px 0;
   }
   #line {
-  	height: 300px !important;
+  	height: 305px !important;
   }
   #currentAge {
   	bottom: 15px;
