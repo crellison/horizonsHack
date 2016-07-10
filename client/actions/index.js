@@ -4,22 +4,19 @@
 
 // These are just placeholders; replace with your code.
 
-const ADD_ACTIVITY = 'ADD_ACTIVITY';
+const ADD_HEALTH = 'ADD_HEALTH';
 
 
-function addActivity(id, name, heartRate, elapsedTime, calories, location) {
+function addHealth(fitness, fatigue, form, age) {
   return {
-    type: ADD_ACTIVITY,
-    id: id,
-    name: name,
-    heartRate: heartRate,
-    elapsedTime: elapsedTime,
-    calories: calories,
-    location: location
+    fitness: fitness,
+    fatigue: fatigue,
+    form: form,
+    age: age
   };
 }
 
 module.exports = {
-  ADD_ACTIVITY: ADD_ACTIVITY,
-  addActivity: addActivity
+  ADD_HEALTH: ADD_HEALTH,
+  addHealth: addHealth
 };
