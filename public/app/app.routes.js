@@ -43,20 +43,6 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'user'
 		})
 
-		// show events
-		.when('/users/events', {
-			templateUrl: 'app/views/pages/users/events.html',
-			controller: 'eventController',
-			controllerAs: 'event'
-		})
-
-		// search events
-		.when('/users/eventsearch', {
-			templateUrl: 'app/views/pages/users/search.html',
-			controller: 'eventSearchController',
-			controllerAs: 'event'
-		})
-
 		.when('/users/create', {
 			templateUrl: 'app/views/pages/users/single.html',
 			controller: 'userCreateController',
