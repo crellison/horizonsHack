@@ -2,51 +2,86 @@
 <html>
 
 <head>
-    <title>Follower Component</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
+	<title>Follower Component</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- MATERIAL DESIGN FONTS -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- MATERIAL DESIGN AND BOOTSTRAP -->
+	<link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="../public/dist/css/bootstrap-material-design.css" rel="stylesheet">
+	<link href="../public/dist/css/ripples.min.css" rel="stylesheet">
+	<!-- <link href="//cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.css" rel="stylesheet"> -->
+	<link href="../public/stylesheets/style.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
 </head>
 
 <body>
-    <canvas id="myChart" width="400" height="400"></canvas>
-    <script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["Cole", "YingHang", "Will", "Abhi", "Darwish", "Lando"],
-            datasets: [{
-                label: 'Age',
-                data: [25, 30, 75, 35, 35, 35],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-    </script>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">PROJECT<b>BUTTON</b></a>
+			</div>
+		</div>
+	</nav>
+	<canvas id="data" width="400" height="100"></canvas>
+	
+	<script>
+	var ctx = document.getElementById("data");
+	// var strava = require('../grabData')
+	// strava(plot)
+	var days = []
+	for (var i = 0; i < 180; i++) {
+		days.push(i)
+	}
+	var days = days.map(function(e) {
+		var day = new Date(Date.now()-e*1000*60*60*24)
+		return day.toDateString()
+	})
+	var data = {
+		labels: days.reverse(),
+		datasets: [
+			{
+				label: "Age",
+				fill: true,
+				lineTension: 0.1,
+				fillColor: "#fc4c02",
+				backgroundColor: "#fc4c02",
+				borderColor: "#fc4c02",
+				borderCapStyle: 'butt',
+				borderDash: [],
+				borderDashOffset: 0.0,
+				borderJoinStyle: 'miter',
+				pointBorderColor: "#fc4c02",
+				pointBackgroundColor: "#fc4c02",
+				pointBorderWidth: 1,
+				pointHoverRadius: 5,
+				pointHoverBackgroundColor: "#2e2e2e",
+				pointHoverBorderColor: "rgb(226,226,226,.8)",
+				pointHoverBorderWidth: 2,
+				pointRadius: 1,
+				pointHitRadius: 10,
+				data: [70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,69,66,64,61,64,62,63,60,58,56,66,62,64,60,59,56,58,54,51,49,47,46,44,43,42,42,41,41,41,41,41,46,45,44,44,44,43,43,43,43,43,43,43,44,44,44,45,45,45,46,46,47,47,48,49,49,56,55,54,61,58,56,54,53,51,50,50,49,52,54,55,53,51,50,49,48,47,47,47,46,46,46,46,47,47,47,54,52,51,51,55,59,56,61,57,54,56,61,56,53,50,47,45,43,50,49,47,44,42,41,39,38,38,37,37,36,36,36,36,37,37,37,38,38,39,39,40,40,41,41,42,42,43,44,44,45,45,46,46,47,47,48,48,49,49,50,50].reverse(),
+				}
+		]
+	};
+
+	var StravaChart = new Chart(ctx, {
+		type: 'line',
+		data: data,
+		options: {
+			scales: {
+				xAxes: [{
+					display: false,
+				}],
+				yAxes: [{
+					display: false,
+				}]
+			}
+		}
+	});
+	</script>
 </body>
 
 </html>

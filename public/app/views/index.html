@@ -7,9 +7,14 @@
     <!-- FOR ANGULAR ROUTING -->
     <base href="/">
     <!-- CSS  -->
+    <!-- FONTS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- load bootstrap from CDN and custom CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/readable/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
+    <link href="mdes/css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="mdes/css/ripples.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- JS -->
     <!-- load angular and angular-route via CDN -->
@@ -270,15 +275,18 @@
             <!--<div class="navbar navbar-inverse" <ng-if="main.loggedIn">-->
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/" class="navbar-brand"><span class="glyphicon glyphicon-heart"></span>Project Button</a>
+                    <a href="/" class="navbar-brand">
+                    <span class="glyphicon glyphicon-tasks"></span>
+                    Project<b>Button</b>
+                    </a>
+                    <ul class="nav navbar-nav right">
+                        <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+                        <li ng-if="!main.loggedIn"><a href="/signup">Sign Up</a></li>
+                        <li ng-if="main.loggedIn" class="navbar-text">Hello {{ main.user.displayName }}!</li>
+                        <li ng-if="main.loggedIn"><a href="/preferences/{{ main.user._id }}">Preferences</a></li>
+                        <li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+                    </ul>
                 </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
-                    <li ng-if="!main.loggedIn"><a href="/signup">Sign Up</a></li>
-                    <li ng-if="main.loggedIn" class="navbar-text">Hello {{ main.user.displayName }}!</li>
-                    <li ng-if="main.loggedIn"><a href="/preferences/{{ main.user._id }}">Preferences</a></li>
-                    <li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
-                </ul>
             </div>
         </div>
     </header>
@@ -291,7 +299,7 @@
     <footer>
         <hr style="margin: 0px 0" />
         <br>
-        <font style="margin: 0px 50px">&copy; Project Button &emsp;|&emsp; Will Yoo, Cole Ellison, Ying Hang Eng</font>
+        <font>&copy; Project Button &emsp;|&emsp; Will Yoo, Cole Ellison, Ying Hang Eng</font>
         <br>
     </footer>
 </body>
