@@ -12,7 +12,7 @@ angular.module('app.routes', ['ngRoute'])
 		.when('/token_exchange', {
 			templateUrl : 'app/views/pages/token.html',
 			controller: 'userTokenController',
-			controller: 'user'
+			controllerAs: 'user'
 		})
 		
 		// login page

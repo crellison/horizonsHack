@@ -42,8 +42,13 @@ var userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  stravaId: {
-  	type: String
+  stravaAccessToken: {
+  	type: String,
+    default: "1"
+  },
+  strava:{
+    type: Number,
+    default: 0
   }
 });
 

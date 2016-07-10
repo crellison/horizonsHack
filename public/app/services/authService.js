@@ -40,6 +40,22 @@ angular.module('authService', [])
 			return false;	
 	};
 
+	authFactory.isStrava = function(){
+		console.log("I AM WILL!");
+		$http({
+		  method: 'GET',
+		  url: '/api/me'
+		}).then(function successCallback(response) {
+		    if(response.strava == 1){
+		    	return true;
+		    } else{
+		    	return false;
+		    }
+		  }, function errorCallback(response) {
+		    console.log(response);
+		  });
+	}
+
 	// get the logged in user
 	authFactory.getUser = function() {
 		if (AuthToken.getToken())

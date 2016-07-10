@@ -12,7 +12,9 @@
         <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
         </canvas>
 		<a href="/users" class="btn btn-primary">View Users</a>
-		<a href="https://www.strava.com/oauth/authorize?client_id=12409&response_type=code&redirect_uri=http://localhost:3000/token_exchange&scope=view_private&approval_prompt=force" class="btn btn-primary">Link to Strava!</a>
+		<div ng-if="main.isStrava">
+			<a href="https://www.strava.com/oauth/authorize?client_id=12409&response_type=code&redirect_uri=http://localhost:3000/token_exchange&scope=view_private&approval_prompt=force" class="btn btn-primary">Link to Strava!</a>
+		</div>
 	</div>
 
 </div>

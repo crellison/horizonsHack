@@ -2,6 +2,7 @@ var User       = require('../models/models').User;
 var jwt        = require('jsonwebtoken');
 var request    = require('request');
 var fs         = require('fs');
+var strava 	   = require('strava-v3');
 
 // super secret for creating tokens
 var superSecret = process.env.SECRET;
@@ -155,6 +156,7 @@ module.exports = function(app, express){
 				if (req.body.password) user.password = req.body.password;
 				if (req.body.email) user.email = req.body.email;
 				if (req.body.location) user.location = req.body.location;
+				if (req.body.stravaAccessToken) user.stravaAccessToken = req.body.stravaAccessToken;
 
 				// save the user
 				user.save(function(err) {
@@ -186,6 +188,35 @@ module.exports = function(app, express){
 		console.log(user);
 		res.json(user);
 		});
+	});
+
+	apiRouter.post('/strava', function(req, res){
+		request.post({url:'https://www.strava.com/oauth/token', form: {code:req.body.code, client_id:process.env.STRAVA_CLIENT_ID, client_secret:process.env.STRAVA_CLIENT_SECRET}}, function(err,httpResponse,body){
+			var yep = JSON.parse(body);
+			User.findById(req.decoded.id, function(err, user) {
+				if (err) res.send(err);
+				user.stravaAccessToken = yep.access_token;
+				user.strava = 1;
+
+				// save the user
+				user.save(function(err) {
+					if (err) res.send(err);
+					// return a message
+					res.json({ message: 'User updated!' });
+				});
+
+			});
+		});
+	});
+
+	apiRouter.get('/strava_data', function(req, res){
+		User.findById(req.decoded.id, function(err, user){
+			if (err) res.send(err);
+			var blah = user.stravaAccessToken;
+			strava.athlete.get({'access_token':blah},function(err,payload) {
+			    res.json(payload);
+			});
+		})
 	});
 	return apiRouter;
 };

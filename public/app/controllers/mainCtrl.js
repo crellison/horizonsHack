@@ -37,6 +37,7 @@ angular.module('mainCtrl', ["chart.js"])
 
 	// get info if a person is logged in
 	vm.loggedIn = Auth.isLoggedIn();
+	vm.isStrava = Auth.isStrava();
 
 	// check to see if a user is logged in on every request
 	$rootScope.$on('$routeChangeStart', function() {
@@ -45,7 +46,6 @@ angular.module('mainCtrl', ["chart.js"])
 		// get user information on page load
 		Auth.getUser()
 			.then(function(data) {
-				console.log(data);
 				vm.user = data.data;
 			});	
 	});	
