@@ -7,12 +7,11 @@
 const ADD_HEALTH = 'ADD_HEALTH';
 
 
-function addHealth(fitness, fatigue, form, age) {
+function addHealth(ages, days) {
   return {
-    fitness: fitness,
-    fatigue: fatigue,
-    form: form,
-    age: age
+  	type: ADD_HEALTH,
+    ages: ages,
+    days: days
   };
 }
 

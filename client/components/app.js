@@ -4,6 +4,7 @@ var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var addEvent = require('../actions').addEvent;
 var Chart = require('chart.js')
+var Data = require('./grabData')
 
 // jQuery AJAX support
 var $ = require('jquery');
@@ -69,23 +70,12 @@ const HealthlineButton = React.createClass({
     console.log("State is: @app.js 125", this.state);
     console.log(this.props.store)
 
-    $.ajax({
-      url: '/api/activities',
-      method: 'GET',
-      success: function(response, store) {
-        var action = addHealth(
-          response.fitness,
-          response.fatigue,
-          response.form,
-          response.age,
-          );
-      }
-    })
+
+    var action = addHealth(Data.ages, Data.days)
+    this.props.store.dispatch(action)
 
     //IN GET REQUEST, DISPATCH AGE AND ACTIVITY DATA
     //THIS HAS TO BE FIXED LOLOLOLOLOL
-    this.props.store.dispatch(action)
-
 
   },
   render: function() {
