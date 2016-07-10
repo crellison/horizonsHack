@@ -36,6 +36,8 @@ const reducer = function(state, action) {
             update["Days"] = state["Days"].concat({
                 days: action.days
             }); 
+            state["Mode"] = "healthline"
+            update["Mode"] = state["Mode"]
             return Object.assign({}, state, update);
         default:
             return DEFAULT_STATE;

@@ -46,7 +46,7 @@ const App = React.createClass ({
     //Control panel views
     if (mode === 'main') {
       mainPanel =  <Profile store={this.props.store} activities={this.props.data}></Profile>
-    } else if (mode === 'lifeline') {
+    } else if (mode === 'healthline') {
       mainPanel = <Profile store={this.props.store} activities={this.props.data}><Healthline></Healthline></Profile>
     }
     return (
@@ -71,6 +71,8 @@ const Avatar = React.createClass({
 
 const Profile = React.createClass({
   render: function() {
+    console.log(this.props.data)
+    console.log(this.props.state)
     return (
       <div className="col-xs-3 tallboy" id="nav" style={{'padding':0}}>
           <div id="profile">
@@ -120,7 +122,7 @@ const Healthline = React.createClass({
     var data = {
     //By Day
     //Need to set this with state
-    labels: this.state.health.age,  //Must be an array (hopefully of ages)
+    labels: this.state.health.ages,  //Must be an array (hopefully of ages)
     //Same?
 
     datasets: [
