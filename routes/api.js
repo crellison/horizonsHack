@@ -137,7 +137,7 @@ module.exports = function(app, express){
 		.get(function(req, res) {
 			User.findById(req.params.user_id, function(err, user) {
 				if (err) res.send(err);
-
+				console.log(user);
 				// return that user
 				res.json(user);
 			});
@@ -150,11 +150,10 @@ module.exports = function(app, express){
 				if (err) res.send(err);
 
 				// set the new user information if it exists in the request
-				if (req.body.name) user.name = req.body.name;
-				if (req.body.username) user.username = req.body.username;
+				if (req.body.displayName) user.displayName = req.body.displayName;
 				if (req.body.password) user.password = req.body.password;
 				if (req.body.email) user.email = req.body.email;
-				if (req.body.zipcode) user.zipcode = req.body.zipcode;
+				if (req.body.location) user.location = req.body.location;
 
 				// save the user
 				user.save(function(err) {
@@ -178,5 +177,11 @@ module.exports = function(app, express){
 			});
 		});
 
+	apiRouter.get('/me', function(req, res) {
+		User.findOne(req.decoded.displayName, function(err, user) {
+		if (err) res.send(err);
+		res.json(user);
+		});
+	});
 	return apiRouter;
 };

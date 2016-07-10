@@ -8,6 +8,12 @@ angular.module('app.routes', ['ngRoute'])
 		.when('/', {
 			templateUrl : 'app/views/pages/home.html'
 		})
+
+		.when('/token_exchange', {
+			templateUrl : 'app/views/pages/token.html',
+			controller: 'mainController',
+			controller: 'user'
+		})
 		
 		// login page
 		.when('/login', {

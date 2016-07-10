@@ -5,9 +5,7 @@
 <div class="row col-md-6 col-md-offset-3">
 
 		<center><h4>
-			<form action="/auth/google/req" method="post">
-				Hello {{main.user.name}} &emsp; <button type="submit" class="btn btn-primary" style="width:200px" /> Link Google Account </button>
-			</form>
+				Hello {{main.user.displayName}}
 		</h4><br></center>
 
 		<form class="form-horizontal" ng-submit="user.saveUser()">
@@ -15,7 +13,7 @@
 		<div class="form-group">
 			<label class="col-sm-3 control-label">Change Name:</label></font>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" ng-model="user.userData.name">
+				<input type="text" class="form-control" ng-model="user.userData.displayName">
 			</div>
 		</div><br>
 
@@ -34,9 +32,9 @@
 		</div><br>
 		
 		<div class="form-group">
-			<label class="col-sm-3 control-label">Change Zipcode</label></font>
+			<label class="col-sm-3 control-label">Change Location</label></font>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" ng-model="user.userData.zipcode">
+				<input type="text" class="form-control" ng-model="user.userData.location">
 			</div>
 		</div><br>
 
