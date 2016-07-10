@@ -8,6 +8,10 @@ const DEFAULT_STATE = {
     "Mode" : "main"
 };
 
+// ----------------------------------------------
+// REDUCER FOR ADD HEALTH
+// ----------------------------------------------
+
 // Note: You may have more than one reducer! If you do, combine them into
 // a single reducer using Redux.combineReducers. See
 // http://redux.js.org/docs/api/combineReducers.html and
@@ -38,6 +42,10 @@ const reducer = function(state, action) {
             return DEFAULT_STATE;
     }
 }.bind(this);
+
+// ----------------------------------------------
+// LOGIN LOGOUT REDUCERS
+// ----------------------------------------------
 
 import { combineReducers } from 'redux'
 import {
@@ -80,22 +88,13 @@ function auth(state = {
   }
 }
 
-// The quotes reducer
-function quotes(state = {}, action) {
-  switch (action.type) {
-
-    default:
-      return state
-  }
-}
-
 // We combine the reducers here so that they
 // can be left split apart above
-const quotesApp = combineReducers({
+const buttonApp = combineReducers({
   auth,
-  quotes
+  reducer
 })
 
-export default quotesApp
+export default buttonApp
 
-module.exports = reducer;
+// module.exports = reducer;
