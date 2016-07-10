@@ -54,7 +54,7 @@ function grabData() {
 					temp.age = Math.round(AGE - temp.form/10)
 					return temp
 				})
-				_.each(data, function(elt) {console.log(elt.age)})
+				// DO SOMETHING WITH DATA HERE
 			}
 		}
 	)
