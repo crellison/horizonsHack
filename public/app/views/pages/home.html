@@ -1,19 +1,16 @@
 <div class="page-header">
 <div class="jumbotron text-center">
-	<h1>Project Button</h1>
+	<h1>Project Benjamin Button</h1>
 
 	<div ng-if="!main.loggedIn">
-		<p>Login here!</p>
-		<a href="/login" class="btn btn-primary">Login</a>
-		<a href="/signup" class="btn btn-primary">Sign Up</a>
-		<br><br><br><br><br>
+	<h2>
+		Gamification / visualization of your fitness life!
+	</h2>
 	</div>
 
 	<div ng-if="main.loggedIn">
-		<p>Welcome {{ main.user.name }}</p>
-		<a href="/users" class="btn btn-primary">View Users</a>  or 
-		<a href="/users/events" class="btn btn-primary">Search Events</a>
-		<br><br><br><br><br>
+		<p>Welcome {{ main.user.displayName }}</p>
+		<a href="/users" class="btn btn-primary">View Users</a>
 	</div>
 
 </div>

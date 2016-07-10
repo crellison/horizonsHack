@@ -22,20 +22,18 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>Username</th>
 			<th>ID</th>
 			<th>Email</th>
-			<th>Zipcode</th>
+			<th>Location</th>
 			<th class="col-sm-2"></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="person in user.users">
-			<td>{{ person.name }}</td>
-			<td>{{ person.username }}</td>
+			<td>{{ person.displayName }}</td>
 			<td>{{ person._id }}</td>
 			<td>{{ person.email }}</td>
-			<td>{{ person.zipcode }}</td>
+			<td>{{ person.location }}</td>
 			<td class="col-sm-2">
 				<a ng-href="/users/{{ person._id }}" class="btn btn-danger">Edit</a>
 				<a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a>
