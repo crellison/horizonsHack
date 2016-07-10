@@ -3,7 +3,9 @@ var Actions = require('../actions');
 // This is just a placeholder; replace with your code.
 // const DEFAULT_STATE = "Redux Calendar";
 const DEFAULT_STATE = {
-
+    "Days" : [],
+    "Age" : [];
+    "Mode" : "main"
 };
 
 // Note: You may have more than one reducer! If you do, combine them into
@@ -18,18 +20,19 @@ const reducer = function(state, action) {
     // This is just a placeholder, replace it with your code.
     // Returning a new store
     switch (action.type) {
-        case Actions.ADD_ACTIVITY:
+        case Actions.ADD_HEALTH:
+
+            //New update object  
             var update = {};
             console.log('action', action)
             console.log('innerState:', state)
-            update[action] = state[action].concat({
-                id: action.id,
-                name: action.name,
-                heartRate: action.heartRate,
-                elapsedTime: action.elapsedTime,
-                calories: action.calories,
-                location: action.location
-            }); //Why are we concat again? Pure functions question ... Why is this important?  
+            update[action.days] = state[action.days].concat({
+                age: age
+            });
+            update[action.age] = state[action.age].concat({
+                age: age  
+            });
+            update[//Why are we concat again? Pure functions question ... Why is this important?  
             return Object.assign({}, state, update);
         default:
             return DEFAULT_STATE;
