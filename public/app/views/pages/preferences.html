@@ -1,0 +1,47 @@
+<div class="page-header">
+	<center><h3>User Preferences</h3></center>
+</div>
+
+<div class="row col-md-6 col-md-offset-3">
+
+		<center><h4>
+			<form action="/auth/google/req" method="post">
+				Hello {{main.user.name}} &emsp; <button type="submit" class="btn btn-primary" style="width:200px" /> Link Google Account </button>
+			</form>
+		</h4><br></center>
+
+		<form class="form-horizontal" ng-submit="user.saveUser()">
+
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Change Name:</label></font>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" ng-model="user.userData.name">
+			</div>
+		</div><br>
+
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Change Email:</label></font>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" ng-model="user.userData.email">
+			</div>
+		</div><br>
+
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Change Password:</label>
+			<div class="col-sm-6">
+				<input type="password" class="form-control" ng-model="user.userData.password">
+			</div>
+		</div><br>
+		
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Change Zipcode</label></font>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" ng-model="user.userData.zipcode">
+			</div>
+		</div><br>
+
+		<br><center><input type="submit" class="btn btn-block btn-primary" value="Save Preferences" style="width:150px"></center>
+
+	</form><br><br>
+
+</div>

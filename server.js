@@ -1,24 +1,13 @@
 var express = require('express')
 var morgan = require('morgan')
 var mongoose = require('mongoose')
-// var MongoStore = require('connect-mongo')(session)
 var bodyParser = require('body-parser')
 var path = require('path')
-var webpack = require('webpack');
-var webpackMiddleware = require("webpack-dev-middleware")
-var config = require('./webpack.config');
 
 var app = express()
-// app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// mongoose.connect(process.env.MONGODB_URI)
-// var mongoStore = new MongoStore({mongooseConnection: mongoose.connection})
-// app.use(session({
-//   secret: process.env.SECRET,
-//   store: mongoStore
-// }))
 
 // configure our app to handle CORS requests
 app.use(function(req, res, next) {
@@ -38,21 +27,12 @@ app.use(morgan('dev'));
 var apiRoutes = require('./routes/api')(app, express);
 app.use('/api', apiRoutes);
 
-var compiler = webpack(config)
-app.use(webpackMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true
-}))
-app.use(require('webpack-hot-middleware')(compiler))
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-// app.use('/api', api)
-
-app.get('/', function(req, res) {
-  res.redirect('index.html')
-})
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
