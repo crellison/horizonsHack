@@ -18,7 +18,7 @@ var t2 = 7
 var AGE = 70
 
 
-var grabData = function grabData() {
+var grabData = function grabData(cb) {
 
     function getTRIMP(hr, dur) {
         return dur * (hr - HR_REST) / (HR_MAX - hr) * Math.exp(B_M * (hr - HR_REST) / (HR_MAX - hr))
@@ -74,12 +74,13 @@ var grabData = function grabData() {
                 dataToVisualize["days"] = dayReturnArray
                 console.log(dataToVisualize)
 
-                return dataToVisualize
+                cb(dataToVisualize) // does something with the data
+                // return dataToVisualize
             }
         }
     )
 }
 
-grabData()
+// grabData()
 
 module.exports = grabData
