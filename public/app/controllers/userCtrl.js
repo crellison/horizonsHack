@@ -39,8 +39,22 @@ angular.module('userCtrl', ['userService'])
 
 })
 
-.controller('userTokenController', function(User){
-	
+.controller('userTokenController', function(User, $routeParams, $http){
+	var vm = this;
+	vm.type = 'edit';
+	// get temp code from url
+	var code = $routeParams['code'];
+	console.log(code);
+	// use http to post to strava server
+	$http({
+		method: 'POST',
+		url: '/api/strava',
+		data: {
+			code: code
+		}
+	}).then(function(data) {
+
+	}, console.log)
 })
 
 // controller applied to user creation page

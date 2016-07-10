@@ -9,8 +9,7 @@ var days = days.map(function(e) {
 
 angular.module('mainCtrl', ["chart.js"])
 
-.controller('mainController', function($rootScope, $scope,  $location, Auth) {
-
+.controller('mainController', function($rootScope, $scope, $location, Auth) {
 
   $scope.labels = days;
   $scope.data = [70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,69,66,64,61,64,62,63,60,58,56,66,62,64,60,59,56,58,54,51,49,47,46,44,43,42,42,41,41,41,41,41,46,45,44,44,44,43,43,43,43,43,43,43,44,44,44,45,45,45,46,46,47,47,48,49,49,56,55,54,61,58,56,54,53,51,50,50,49,52,54,55,53,51,50,49,48,47,47,47,46,46,46,46,47,47,47,54,52,51,51,55,59,56,61,57,54,56,61,56,53,50,47,45,43,50,49,47,44,42,41,39,38,38,37,37,36,36,36,36,37,37,37,38,38,39,39,40,40,41,41,42,42,43,44,44,45,45,46,46,47,47,48,48,49,49,50,50].reverse();
@@ -48,6 +47,7 @@ angular.module('mainCtrl', ["chart.js"])
 
 	// get info if a person is logged in
 	vm.loggedIn = Auth.isLoggedIn();
+	vm.isStrava = Auth.isStrava();
 
 	// check to see if a user is logged in on every request
 	$rootScope.$on('$routeChangeStart', function() {
@@ -56,7 +56,6 @@ angular.module('mainCtrl', ["chart.js"])
 		// get user information on page load
 		Auth.getUser()
 			.then(function(data) {
-				console.log(data);
 				vm.user = data.data;
 			});	
 	});	
