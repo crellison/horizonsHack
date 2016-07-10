@@ -5,16 +5,29 @@
             <h2>
 		Gamification / visualization of your fitness life!
 	</h2>
-	</div>
-
-	<div ng-if="main.loggedIn">
-		<p>Welcome {{ main.user.displayName }}</p>
-        <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
-        </canvas>
-		<a href="/users" class="btn btn-primary">View Users</a>
-		<div ng-if="main.isStrava">
-			<a href="https://www.strava.com/oauth/authorize?client_id=12409&response_type=code&redirect_uri=http://localhost:3000/token_exchange&scope=view_private&approval_prompt=force" class="btn btn-primary">Link to Strava!</a>
-		</div>
-	</div>
-
-</div>
+        </div>
+        <div ng-if="main.loggedIn">
+            <p>Welcome {{ main.user.displayName }}</p>
+            <div class="avatar"></div>
+            <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
+            </canvas>
+            <a href="/users" class="btn btn-primary">View Users</a>
+           <div ng-if="main.isStrava">
+            <a href="https://www.strava.com/oauth/authorize?client_id=12409&response_type=code&redirect_uri=http://localhost:3000/token_exchange&scope=view_private&approval_prompt=force" class="btn btn-primary">Link to Strava!</a>
+           </div>
+            <script>
+            angular.element(".avatar").animateSprite({
+                fps: 12,
+                animations: {
+                    walkRight: [0, 1, 2, 3, 4, 5, 6, 7],
+                    walkLeft: [15, 14, 13, 12, 11, 10, 9, 8]
+                },
+                loop: true,
+                complete: function() {
+                    // use complete only when you set animations with 'loop: false'
+                    alert("animation End");
+                }
+            });
+            </script>
+        </div>
+    </div>
