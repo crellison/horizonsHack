@@ -13,6 +13,11 @@
 	margin: 0;
 }
 
+/* PERSONAL */
+input.form-control:focus {
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
 .tallboy {
 	height: 100vh;
 }
