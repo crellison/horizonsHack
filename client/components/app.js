@@ -16,7 +16,7 @@ const App = React.createClass ({
     },
 
   render: function() {
-
+    
     //CONTROL PANEL RENDERING HERE - VIA MODE IN STATE
     var mainPanel = null;
     var mode = this.props.store.getState().mode;
