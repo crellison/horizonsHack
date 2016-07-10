@@ -4,7 +4,7 @@ var Actions = require('../actions');
 // const DEFAULT_STATE = "Redux Calendar";
 const DEFAULT_STATE = {
     "Days" : [],
-    "Age" : [];
+    "Ages" : [],
     "Mode" : "main"
 };
 
@@ -30,13 +30,12 @@ const reducer = function(state, action) {
             var update = {};
             console.log('action', action)
             console.log('innerState:', state)
-            update[action.days] = state[action.days].concat({
-                age: age
-            });
-            update[action.age] = state[action.age].concat({
-                age: age  
-            });
-            update[//Why are we concat again? Pure functions question ... Why is this important?  
+            update["Ages"] = state["Ages"].concat({
+                ages: action.ages
+            }); 
+            update["Days"] = state["Days"].concat({
+                days: action.days
+            }); 
             return Object.assign({}, state, update);
         default:
             return DEFAULT_STATE;
