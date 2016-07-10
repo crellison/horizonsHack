@@ -1,4 +1,4 @@
-<div class="page-header">
+<div>
     <div class="jumbotron text-center">
         <h1>Project Benjamin Button</h1>
         <div ng-if="!main.loggedIn">
@@ -7,12 +7,12 @@
 	</h2>
 	</div>
 
-	<div ng-if="main.loggedIn">
-		<p>Welcome {{ main.user.displayName }}</p>
-        <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
-        </canvas>
+	<div ng-if="main.loggedIn">     
 		<a href="/users" class="btn btn-primary">View Users</a>
-		<a href="https://www.strava.com/oauth/authorize?client_id=12409&response_type=code&redirect_uri=http://localhost:3000/token_exchange&scope=view_private&approval_prompt=force" class="btn btn-primary">Link to Strava!</a>
+		<a id="strava" href="https://www.strava.com/oauth/authorize?client_id=12409&response_type=code&redirect_uri=http://localhost:3000/token_exchange&scope=view_private&approval_prompt=force" class="btn btn-primary">Link to Strava!</a>
 	</div>
-
+	<span id="currentAge">56</span> 
+	<canvas id="line" width="100%" height="25%" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
+    </canvas>
 </div>
+

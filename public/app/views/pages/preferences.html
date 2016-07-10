@@ -1,45 +1,47 @@
-<div class="page-header">
-	<center><h3>User Preferences</h3></center>
-</div>
+<div class="container">
+	<div class="page-header">
+		<center><h3>User Preferences</h3></center>
+	</div>
 
-<div class="row col-md-6 col-md-offset-3">
+	<div class="row col-md-6 col-md-offset-3">
 
-		<center><h4>
-				Hello {{main.user.displayName}}
-		</h4><br></center>
+			<center><h4>
+					Hello {{main.user.displayName}}
+			</h4><br></center>
 
-		<form class="form-horizontal" ng-submit="user.saveUser()">
+			<form class="form-horizontal" ng-submit="user.saveUser()">
 
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Change Name:</label></font>
-			<div class="col-sm-6">
-				<input type="text" class="form-control" ng-model="user.userData.displayName">
-			</div>
-		</div><br>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Change Name:</label></font>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="user.userData.displayName">
+				</div>
+			</div><br>
 
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Change Email:</label></font>
-			<div class="col-sm-6">
-				<input type="text" class="form-control" ng-model="user.userData.email">
-			</div>
-		</div><br>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Change Email:</label></font>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="user.userData.email">
+				</div>
+			</div><br>
 
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Change Password:</label>
-			<div class="col-sm-6">
-				<input type="password" class="form-control" ng-model="user.userData.password">
-			</div>
-		</div><br>
-		
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Change Location</label></font>
-			<div class="col-sm-6">
-				<input type="text" class="form-control" ng-model="user.userData.location">
-			</div>
-		</div><br>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Change Password:</label>
+				<div class="col-sm-6">
+					<input type="password" class="form-control" ng-model="user.userData.password">
+				</div>
+			</div><br>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Change Location</label></font>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="user.userData.location">
+				</div>
+			</div><br>
 
-		<br><center><input type="submit" class="btn btn-block btn-primary" value="Save Preferences" style="width:150px"></center>
+			<br><center><input type="submit" class="btn btn-block btn-primary" value="Save Preferences" style="width:150px"></center>
 
-	</form><br><br>
+		</form><br><br>
 
+	</div>
 </div>

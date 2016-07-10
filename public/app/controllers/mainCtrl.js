@@ -1,35 +1,46 @@
+var days = []
+for (var i = 0; i < 180; i++) {
+	days.push(i)
+}
+var days = days.map(function(e) {
+	var day = new Date(Date.now()-e*1000*60*60*24)
+	return day.toDateString()
+})
+
 angular.module('mainCtrl', ["chart.js"])
 
 .controller('mainController', function($rootScope, $scope,  $location, Auth) {
 
 
-  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  $scope.series = ['Series A', 'Series B'];
-  $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
-  ];
+  $scope.labels = days;
+  $scope.data = [70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,69,66,64,61,64,62,63,60,58,56,66,62,64,60,59,56,58,54,51,49,47,46,44,43,42,42,41,41,41,41,41,46,45,44,44,44,43,43,43,43,43,43,43,44,44,44,45,45,45,46,46,47,47,48,49,49,56,55,54,61,58,56,54,53,51,50,50,49,52,54,55,53,51,50,49,48,47,47,47,46,46,46,46,47,47,47,54,52,51,51,55,59,56,61,57,54,56,61,56,53,50,47,45,43,50,49,47,44,42,41,39,38,38,37,37,36,36,36,36,37,37,37,38,38,39,39,40,40,41,41,42,42,43,44,44,45,45,46,46,47,47,48,48,49,49,50,50].reverse();
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
   };
-  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+  $scope.datasetOverride = {
+				label: "Age",
+				fill: true,
+				type: 'line',
+				lineTension: 0.1,
+				fillColor: "#fc4c02",
+				backgroundColor: "#fc4c02",
+				borderColor: "#fc4c02",
+				borderDash: [],
+				borderDashOffset: 0.0,
+				pointBorderColor: "rgba(0,0,0,0)",
+				pointBackgroundColor: "rgba(0,0,0,0)",
+				pointHoverBackgroundColor: "rgba(0,0,0,0)",
+				pointHoverBorderColor: "rgba(0,0,0,0)",
+			}
   $scope.options = {
     scales: {
-      yAxes: [
-        {
-          id: 'y-axis-1',
-          type: 'linear',
-          display: true,
-          position: 'left'
-        },
-        {
-          id: 'y-axis-2',
-          type: 'linear',
-          display: true,
-          position: 'right'
-        }
-      ]
-    }
+				xAxes: [{
+					display: false,
+				}],
+				yAxes: [{
+					display: false,
+				}]
+			}
   };
 
 

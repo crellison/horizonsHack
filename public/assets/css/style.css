@@ -22,22 +22,40 @@ a {
 .navbar-brand *,.navbar-brand, .navbar-nav.navbar-right * {
 	color: #e2e2e2 !important;
 }
-
+.navbar-header {
+	width: 100vw;
+	position: relative;
+}
 /* PERSONAL */
-#data {
+#line {
 	position: fixed;
-	bottom: 0;
+	bottom: 57px;
 	left: 0;
+	width: 100vw !important;
 }
 .right {
-	display: inline-flex;
-	position: fixed;
-	top: -7px;
+	position: absolute;
 	right: 10px;
+	top: -10px;
+	display: inline-flex;
 }
 .navbar .navbar-text {
-	margin-top: 28px;
+	margin-top: 33px;
 }
+#currentAge {
+	font-weight: 800;
+	font-size: 300px;
+	position: fixed;
+	bottom: 15px;
+	left: -35px;
+	color: rgba(226,226,226,0.7);
+}
+#strava {
+	background-color: #fc4c02;
+	color: #fff;
+	padding: 10px 20px;
+}
+
 /* YINGHANG'S OLD STYLES 
 ====================*/
 
