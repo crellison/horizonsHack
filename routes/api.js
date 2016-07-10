@@ -332,7 +332,7 @@ apiRouter.get('/strava_data', function(req, res){
 						})
 						// _.each(data, function(elt,i) {console.log(i+': '+elt.age)})
 						// console.log(data.map(function(e) {return e.age}))
-						res.json(data.map(function(e) {return e.age}))
+						res.json(data)
 						}
 					})
 				})

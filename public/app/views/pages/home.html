@@ -1,30 +1,25 @@
 <div>
-    <div class="jumbotron text-center">
-        <h1>Project Button</h1>
-	<div ng-if="main.loggedIn">   
-	<!-- <div class="avatar"></div>   -->
-		<a href="/users" class="btn btn-primary">View Users</a>
-        <div ng-if="main.isStrava">   
+	<div class="jumbotron text-center">
+		<a href="/">
+		<span class="glyphicon glyphicon-chevron-left" id="leftClick"></span>
+		</a>
+		<h1>{{title}}</h1>
+		<a href="?q=1">
+		<span class="glyphicon glyphicon-chevron-right" id="rightClick"></span>
+		</a>
+		<div ng-if="main.isStrava">   
 		<a id="strava" href="https://www.strava.com/oauth/authorize?client_id=12409&response_type=code&redirect_uri=http://localhost:3000/token_exchange&scope=view_private&approval_prompt=force" class="btn btn-primary">Link to Strava!</a>
-        </div>
+		</div>
 	</div>
 	<span id="currentAge">{{age}}</span>
 	<canvas id="line" width="100%" height="25%" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
-    </canvas>
+	</canvas>
 </div>
-            <script>
-            angular.element(".avatar").animateSprite({
-                fps: 12,
-                animations: {
-                    walkRight: [0, 1, 2, 3, 4, 5, 6, 7],
-                    walkLeft: [15, 14, 13, 12, 11, 10, 9, 8]
-                },
-                loop: true,
-                complete: function() {
-                    // use complete only when you set animations with 'loop: false'
-                    alert("animation End");
-                }
-            });
-            </script>
-        </div>
-    </div>
+			<script>
+				$('a').click(function(e) {
+					e.preventDefault()
+					window.location.replace($(this).attr('href'))
+				})
+			</script>
+		</div>
+	</div>

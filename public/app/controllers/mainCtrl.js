@@ -9,7 +9,7 @@ var days = days.map(function(e) {
 
 angular.module('mainCtrl', ["chart.js"])
 
-.controller('mainController', function($rootScope, $scope, $location, Auth, $http) {
+.controller('mainController', function($rootScope, $scope, $location, Auth, $http, $routeParams) {
 	
 	$http({
 		method: 'GET',
@@ -17,28 +17,47 @@ angular.module('mainCtrl', ["chart.js"])
 	}).then(function(data) {
 		console.log('inside data control')
 		// console.log(data)
-	
-	$scope.age = data.data[data.data.length-1]
+		console.log($routeParams['q'])
+		var colors = ['#fc4c02']
+	if (!$routeParams['q']) {
+		$scope.age = data.data[data.data.length-1].age
+		$scope.data = data.data.map(function(e) {return e.age})
+		$scope.series = 'Age'
+		$scope.title = 'Your Button Age'
+	} else {
+		$scope.data = [
+			data.data.map(function(e) {return e.fitness}),
+			data.data.map(function(e) {return e.fatigue}),
+			data.data.map(function(e) {return e.form})
+		].reverse()
+		colors = ['rgba(0, 146, 190,.7)','rgba(254, 194, 71,.7)', 'rgba(252, 76,2,.7)']
+		$scope.series = ['Fitness', 'Fatigue', 'Form']
+		$scope.title = 'Fitness, Fatigue, and Form'
+	}
   $scope.labels = days;
-  $scope.data = data.data
+  
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
   };
-  $scope.datasetOverride = {
-				label: "Age",
-				fill: true,
-				type: 'line',
-				lineTension: 0.1,
-				fillColor: "#fc4c02",
-				backgroundColor: "#fc4c02",
-				borderColor: "#fc4c02",
-				borderDash: [],
-				borderDashOffset: 0.0,
-				pointBorderColor: "rgba(0,0,0,0)",
-				pointBackgroundColor: "rgba(0,0,0,0)",
-				pointHoverBackgroundColor: "rgba(0,0,0,0)",
-				pointHoverBorderColor: "rgba(0,0,0,0)",
-			}
+  console.log(colors)
+  $scope.datasetOverride = colors.map(function(e) {
+  			return {
+					fill: true,
+					type: 'line',
+					lineTension: 0.1,
+					fillColor: e,
+					backgroundColor: e,
+					borderColor: e,
+					fillOpacity: 0.5,
+					borderDash: [],
+					borderDashOffset: 0.0,
+					pointBorderColor: "rgba(0,0,0,0)",
+					pointBackgroundColor: "rgba(0,0,0,0)",
+					pointHoverBackgroundColor: "rgba(0,0,0,0)",
+					pointHoverBorderColor: "rgba(0,0,0,0)",
+				}
+			})
+  $scope.datasetOverride.length===1 ? $scope.datasetOverride = $scope.datasetOverride[0] : null
   $scope.options = {
     scales: {
 				xAxes: [{

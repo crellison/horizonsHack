@@ -49,6 +49,9 @@ footer {
 .navbar .navbar-nav > li > a {
 	padding: 5px 10px;
 }
+.jumbotron {
+	position: relative;
+}
 
 /* PERSONAL */
 #line {
@@ -78,6 +81,20 @@ footer {
 	background-color: #fc4c02;
 	color: #fff;
 	padding: 10px 20px;
+}
+#rightClick, #leftClick {
+  position: absolute;
+  color: #e2e2e2;
+  top: 45%;
+}
+#rightClick {
+  right: 20px;
+}
+#leftClick {
+	left: 20px;
+}
+#rightClick:hover, #leftClick:hover {
+	color: #2e2e2e;
 }
 
 /* YINGHANG'S OLD STYLES 
