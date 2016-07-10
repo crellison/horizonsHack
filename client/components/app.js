@@ -17,6 +17,28 @@ const App = React.createClass ({
     },
 
   render: function() {
+    // ------------------------------------------
+    // LOGIN PAGE
+    // ------------------------------------------
+    return (
+      <div className="row">
+        <div className="col-xs-8 col-xs-offset-2 tallboy">
+          <form className="form-signin">
+            <h2 className="form-signin-heading">Please sign in</h2>
+            <label name="inputEmail" className="sr-only">Email address</label>
+            <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required=""/>
+            <label name="inputPassword" className="sr-only">Password</label>
+            <input type="password" id="inputPassword" className="form-control" placeholder="Password" required=""/>
+            <div className="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me"/> 
+              </label>
+            </div>
+            <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          </form>
+        </div>
+      </div>
+    )
 
     //CONTROL PANEL RENDERING HERE - VIA MODE IN STATE
     var mainPanel = null;
