@@ -6,6 +6,7 @@
     "start": "nodemon server.js"
   },
   "dependencies": {
+    "angular-chart.js": "^1.0.0-alpha8",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.11.1",
