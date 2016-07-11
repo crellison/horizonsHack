@@ -31,7 +31,7 @@ angular.module('mainCtrl', ["chart.js"])
 			data.data.map(function(e) {return e.form})
 		].reverse()
 		colors = ['rgba(0, 146, 190,.7)','rgba(254, 194, 71,.7)', 'rgba(252, 76,2,.7)']
-		$scope.series = ['Fitness', 'Fatigue', 'Form']
+		$scope.series = ['Form', 'Fatigue', 'Fitness']
 		$scope.title = 'Fitness, Fatigue, and Form'
 	}
   $scope.labels = days;
